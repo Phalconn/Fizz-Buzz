@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Abdoulie Njai</title>
+    <title>FIZZ BUZZ: A Coding Project by Abdoulie Njai</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="img/logo.svg" class="d-inline-block align-text-top" 
-                width="30" height="24"> APP NAME</a>
+                width="30" height="24"> FIZZ BUZZ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
                         <a class="nav-link active" aria-current="page">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/Phalconn/Fizz-Buzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -57,17 +57,159 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-//Call Hello World
-function helloWorld(){
-    alert("hello World");
+//get values from the user. we need to get the fizz and the buzz value.
+function getValues(){
+
+    //get the user values from the page
+    let fizzValue = document.getElementById("fizzValue").value;
+    let buzzValue = document.getElementById("buzzValue").value;
+
+    //parse for numbers
+    fizzValue = parseInt(fizzValue);
+    buzzValue = parseInt(buzzValue);
+
+    //check to make sure they are integers
+    if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
+
+        //call the fizzBuzz
+        let fbArray = fizzBuzz(fizzValue,buzzValue);
+        //call displayData and write the values to the screen
+        displayData(fbArray);
+
+    } else {
+        alert("Error: Program is expecting an integer");
+    }
+
+
+}
+//do fizz buzz
+function fizzBuzz(fizzValue, buzzValue) 
+    {
+
+    let returnArray = [];
+
+    
+    //loop from 1 to 100
+    for (let i = 1; i <= 100; i++) {
+        //check to see if divisible by both (3 and 5)
+        //check to see if divisible by fizz value (3)
+        //check to see if divisible by fizz value (5)
+            if(i % fizzValue == 0 && i % buzzValue == 0){
+                returnArray.push('FizzBuzz');
+            }else if(i % fizzValue == 0) {
+                returnArray.push('Fizz');
+            }else if(i % buzzValue ==0) {
+                returnArray.push('Buzz');
+            }else{
+                returnArray.push(i);
+            }
+
+    }
+    return returnArray;  
+}
+    //loop over the array and create a tablerow for each item.
+
+function displayData(fbArray){
+
+    //get table body element from the page
+    let tableBody = document.getElementById("results");
+
+    //get the template row
+    let templateRow = document.getElementById("fbTemplate");
+
+
+    //clear table first
+    tableBody.innerHTML = "";
+
+    for (let index = 0; index < fbArray.length; index += 5) {
+
+        let tableRow = document.importNode(templateRow.content, true);
+
+        //grab just the <td> and put them into an array
+        let rowCols = tableRow.querySelectorAll("td");
+        rowCols[1].classList.add(fbArray[index]);
+        rowCols[0].textContent = fbArray[index];
+        
+        rowCols[2].classList.add(fbArray[index + 1]);
+        rowCols[1].textContent = fbArray[index+1];
+
+        rowCols[2].classList.add(fbArray[index+ 2]);
+        rowCols[2].textContent = fbArray[index+2];
+
+        rowCols[3].classList.add(fbArray[index+ 3]);
+        rowCols[3].textContent = fbArray[index+3];
+
+        rowCols[4].classList.add(fbArray[index+ 4]);
+        rowCols[4].textContent = fbArray[index+4];
+        
+        tableBody.appendChild(tableRow);
+
+
+    }
+
+    //add all rows to table
+
+}
 }
                     </code></pre>
             </div>
-                <div class="col-lg-4">
-                    <p>The code is structured in one funtion.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a funtion that displays an alert with a message of "Hello World"</p>
+            <div class="col-lg-4">
+                    <p><strong>The code is structured with several functions</strong>.</p>
+                    <h2>Get the values from the user</h2>
 
+
+                                <p>First off we start by writing a function to get values from the user to determine what to display. The  variable <strong>getValues</strong> is declared and in  consists of two several functions.</p> 
+
+                                The let statement is declared using two variables, <strong>fizzValue</strong> and <strong>buzzValue</strong> to obtain the users input.
+
+                                <p>Next, we use a method to parse for numbers. The <strong>parseInt()</strong> function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).</p> 
+
+                                <p>Then we have to validate if the user has entered integers by using an <strong>If statement(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {}.</strong> </p>
+
+                                By using a let statement with a variable of <strong>fbArray</strong>, we are able to call <strong>fizzBuzz</strong> by calling a function and passing our variables <strong>fizzValue</strong> and <strong>buzzValue</strong> as parameters in the function.</p>
+
+                                <h2>Do Fizz Buzz</h2>
+
+                                <p>Next, we write a function that will make the program display <strong>“Fizz Buzz”</strong>. 
+                                Simply creating a for loop with an <strong>if/else statement</strong> to iterate from 1 to 100. Once that has been done we write another function to return the array. We did so by declaring <strong>returnArray.push(i)</strong>. </p>
+
+                                <p><strong>Here, the program checks for the following:</strong> </p>
+
+                                <p>1. Check tho see if its divisible by both (3 and 5).
+                                    If so push <strong>FizzBuzz</strong> in the array
+                                </p>
+                                
+                                <p>2. Check to see if divisible by <strong>Fizz Value(3)</strong>.
+                                    If so push <strong>“fizz”</strong> into the array and not a number</p>
+
+
+                                <p>3. Check to see if divisible by <strong>Buzz Value(5)</strong>
+                                    If so push <strong>“buzz”</strong> into the array and not a number</p>
+
+                                <p>4.If none then push number into the array</p>
+                                
+                                <h2> Call display data and write the values to the screen</h2>
+
+                                <p> After doing so, we need the application to display the data by declaring a function called <strong> displayData</strong> with the parameter <strong> fArray</strong></p>
+
+                                <h2>Get the table body element from the page by using a document fragment.</h2>
+
+                                <p>We are also going to use a template literal which allows the use of multi-line strings and string interpolation features with them.</p> 
+
+                                <p>In the site.js file we declare a let statement with a variable of tableBody and using document.getElementById in order to retrieve the “results” from our inner HTML. Our inner HTML of element “results” is set with our a template element with an id of <strong>fbTemplate</strong> that consists of table rows and table data elements.</p>
+
+
+                                <h2>Get the template row</h2>
+
+                                <p>We get the template row by also declaring a let statement of templateRow and. Use a <strong> DOM</strong> (document.getElementByID(“fbTemplate”)) and pass in the <strong> fbTemplate</strong>  element from our inner HTML.</p> 
+
+                                <p>Clearing the table is crucial too. If we have a hundred numbers on display, we don’t want the program to add another hundred numbers by declaring <strong>tableBody.InnerHTML = “”;</strong>.</p>
+
+
+                                <h2> Add all rows to the table</h2>
+
+                                <p>Using a <strong>for loop</strong> with a combination of document fragments, the program enables us to add table rows and table data to display the results. Since the for loop is going through numbers one to hundred,  we should write a function ta add rows and columns as long as we are less than the length of the array and stops at the index of [99] so we don’t go out of bounds.</p> 
+                    
                 </div>
             </div>
         </div>

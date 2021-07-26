@@ -10,11 +10,11 @@ body{
 }
 
 nav{
-    background-color: var(--dark-color);
+    background-color: #38EF7D
 }
 
 footer{
-    background-color: var(--dark-color);
+    background-color: #38EF7D;
 }
 
 
@@ -27,7 +27,7 @@ footer .social>a{
     opacity: 0.75;
 }
 footer .social>a:hover{
-    color: #0A71B8;
+    color: #242322;
 }
 
 .bsicon{
@@ -47,7 +47,22 @@ footer .social>a:hover{
     }
 
 .checkList >li i{
-    color: #1d5888;
+    color: #38EF7D;
+}
+
+.Fizz{
+color: darkgreen;
+}
+
+.Buzz{
+    color: rgb(95, 5, 117);
+
+}
+
+.FizzBuzz{
+    color: #E44D26;
+    font-weight: bold;
+
 }
 
 h1,h2,h3,h4,h6,h6{
